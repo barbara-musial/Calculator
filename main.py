@@ -2,7 +2,21 @@ import tkinter as tk
 
 
 def click(number):
-    e.insert(0, number)
+    e.delete(0, 'end')
+    e.insert(9-0, number)
+
+
+def add():
+    global num1
+    num1 = e.get()
+    e.delete(0, 'end')
+
+
+def result():
+    global num2
+    num2 = e.get()
+    e.delete(0, 'end')
+    e.insert(0, int(num1) + int(num2))
 
 
 def clear():
@@ -13,7 +27,7 @@ win = tk.Tk()
 win.title('Calculator')
 win.geometry('250x350')
 
-e = tk.Entry(win, text='')
+e = tk.Entry(win, text='', justify='right')
 e.grid(column=0, columnspan=4, row=0, sticky='NSEW')
 
 b1 = tk.Button(win, text='1',
@@ -56,7 +70,8 @@ b0 = tk.Button(win, text='0',
                command=lambda: click(0))
 b0.grid(column=0, columnspan=3, row=5, sticky='NSEW')
 
-plus = tk.Button(win, text='+')
+plus = tk.Button(win, text='+',
+                 command=add)
 plus.grid(column=3, row=2, rowspan=2, sticky='NSEW')
 
 minus = tk.Button(win, text='-')
@@ -68,7 +83,8 @@ multiply.grid(column=2, row=1, sticky='NSEW')
 divide = tk.Button(win, text='÷')
 divide.grid(column=1, row=1, sticky='NSEW')
 
-equal = tk.Button(win, text='=')
+equal = tk.Button(win, text='=',
+                  command=result)
 equal.grid(column=3, row=4, rowspan=2, sticky='NSEW')
 
 c = tk.Button(win, text='C', command=clear)
