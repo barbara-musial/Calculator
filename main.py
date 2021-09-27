@@ -2,21 +2,37 @@ import tkinter as tk
 
 
 def click(number):
-    e.delete(0, 'end')
-    e.insert(9-0, number)
+    if e == ' ':
+        e.insert(9-0, number)
+    else:
+        e.delete(0, 'end')
+        e.insert(9 - 0, number)
 
 
 def add():
-    global num1
-    num1 = e.get()
+    global first
+    global action
+    action = 'addition'
+    first = e.get()
+    e.delete(0, 'end')
+
+
+def sub():
+    global first
+    global action
+    action = 'subtraction'
+    first = e.get()
     e.delete(0, 'end')
 
 
 def result():
-    global num2
-    num2 = e.get()
+    global second
+    second = e.get()
     e.delete(0, 'end')
-    e.insert(0, int(num1) + int(num2))
+    if action == 'addition':
+        e.insert(0, int(first) + int(second))
+    if action == 'subtraction':
+        e.insert(0, int(first) - int(second))
 
 
 def clear():
@@ -74,14 +90,15 @@ plus = tk.Button(win, text='+',
                  command=add)
 plus.grid(column=3, row=2, rowspan=2, sticky='NSEW')
 
-minus = tk.Button(win, text='-')
+minus = tk.Button(win, text='-',
+                  command=sub)
 minus.grid(column=3, row=1, sticky='NSEW')
 
-multiply = tk.Button(win, text='×')
-multiply.grid(column=2, row=1, sticky='NSEW')
+mult = tk.Button(win, text='×')
+mult.grid(column=2, row=1, sticky='NSEW')
 
-divide = tk.Button(win, text='÷')
-divide.grid(column=1, row=1, sticky='NSEW')
+div = tk.Button(win, text='÷')
+div.grid(column=1, row=1, sticky='NSEW')
 
 equal = tk.Button(win, text='=',
                   command=result)
