@@ -2,11 +2,7 @@ import tkinter as tk
 
 
 def click(number):
-    if e == ' ':
         e.insert(9-0, number)
-    else:
-        e.delete(0, 'end')
-        e.insert(9 - 0, number)
 
 
 def add():
@@ -25,6 +21,14 @@ def sub():
     e.delete(0, 'end')
 
 
+def multiply():
+    global first
+    global action
+    action = 'multiplication'
+    first = e.get()
+    e.delete(0, 'end')
+
+
 def result():
     global second
     second = e.get()
@@ -33,6 +37,8 @@ def result():
         e.insert(0, int(first) + int(second))
     if action == 'subtraction':
         e.insert(0, int(first) - int(second))
+    if action == 'multiplication':
+        e.insert(0, int(first) * int(second))
 
 
 def clear():
@@ -94,7 +100,8 @@ minus = tk.Button(win, text='-',
                   command=sub)
 minus.grid(column=3, row=1, sticky='NSEW')
 
-mult = tk.Button(win, text='×')
+mult = tk.Button(win, text='×',
+                 command=multiply)
 mult.grid(column=2, row=1, sticky='NSEW')
 
 div = tk.Button(win, text='÷')
