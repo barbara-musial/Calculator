@@ -29,6 +29,14 @@ def multiply():
     e.delete(0, 'end')
 
 
+def divide():
+    global first
+    global action
+    action = 'division'
+    first = e.get()
+    e.delete(0, 'end')
+
+
 def result():
     global second
     second = e.get()
@@ -39,6 +47,8 @@ def result():
         e.insert(0, int(first) - int(second))
     if action == 'multiplication':
         e.insert(0, int(first) * int(second))
+    if action == 'division':
+        e.insert(0, int(first) / int(second))
 
 
 def clear():
@@ -104,7 +114,8 @@ mult = tk.Button(win, text='×',
                  command=multiply)
 mult.grid(column=2, row=1, sticky='NSEW')
 
-div = tk.Button(win, text='÷')
+div = tk.Button(win, text='÷',
+                command=divide)
 div.grid(column=1, row=1, sticky='NSEW')
 
 equal = tk.Button(win, text='=',
