@@ -63,7 +63,7 @@ def divide():
 def result():
     global second
     second = text2.get()
-    text1.set(text1.get() + str(second))
+    text1.set(text1.get() + str(second) + ' = ')
     text2.set('')
     if action == 'addition':
         text2.set(int(first) + int(second))
@@ -73,6 +73,9 @@ def result():
         text2.set(int(first) * int(second))
     if action == 'division':
         text2.set(int(first) / int(second))
+        last = text2.get()
+        if last[-1] == '0':
+            text2.set(int(float(last)))
 
 
 def clear():
@@ -162,16 +165,16 @@ c = tk.Button(win, text='C', bg='#66ccff', activeforeground='#cccccc', bd=4,
               command=clear)
 c.grid(column=0, row=2, sticky='NSEW')
 
-win.grid_columnconfigure(0, weight=1)
-win.grid_columnconfigure(1, weight=1)
-win.grid_columnconfigure(2, weight=1)
-win.grid_columnconfigure(3, weight=1)
+win.grid_columnconfigure(0, weight=2)
+win.grid_columnconfigure(1, weight=2)
+win.grid_columnconfigure(2, weight=2)
+win.grid_columnconfigure(3, weight=2)
 win.grid_rowconfigure(0, weight=0)
 win.grid_rowconfigure(1, weight=1)
-win.grid_rowconfigure(2, weight=1)
-win.grid_rowconfigure(3, weight=1)
-win.grid_rowconfigure(4, weight=1)
-win.grid_rowconfigure(5, weight=1)
-win.grid_rowconfigure(6, weight=1)
+win.grid_rowconfigure(2, weight=2)
+win.grid_rowconfigure(3, weight=2)
+win.grid_rowconfigure(4, weight=2)
+win.grid_rowconfigure(5, weight=2)
+win.grid_rowconfigure(6, weight=2)
 
 tk.mainloop()
