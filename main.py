@@ -2,68 +2,93 @@ import tkinter as tk
 
 
 def click(number):
-    e.insert(9-0, number)
+    if number == 1:
+        text2.set(text2.get() + '1')
+    if number == 2:
+        text2.set(text2.get() + '2')
+    if number == 3:
+        text2.set(text2.get() + '3')
+    if number == 4:
+        text2.set(text2.get() + '4')
+    if number == 5:
+        text2.set(text2.get() + '5')
+    if number == 6:
+        text2.set(text2.get() + '6')
+    if number == 7:
+        text2.set(text2.get() + '7')
+    if number == 8:
+        text2.set(text2.get() + '8')
+    if number == 9:
+        text2.set(text2.get() + '9')
+    if number == 0:
+        text2.set(text2.get() + '0')
 
 
 def add():
     global first
     global action
     action = 'addition'
-    first = e.get()
-    e.delete(0, 'end')
+    first = text2.get()
+    text2.set('')
 
 
 def sub():
     global first
     global action
     action = 'subtraction'
-    first = e.get()
-    e.delete(0, 'end')
+    first = text2.get()
+    text2.set('')
 
 
 def multiply():
     global first
     global action
     action = 'multiplication'
-    first = e.get()
-    e.delete(0, 'end')
+    first = text2.get()
+    text2.set('')
 
 
 def divide():
     global first
     global action
     action = 'division'
-    first = e.get()
-    e.delete(0, 'end')
+    first = text2.get()
+    text2.set('')
 
 
 def result():
     global second
-    second = e.get()
-    e.delete(0, 'end')
+    second = text2.get()
+    text2.set('')
     if action == 'addition':
-        e.insert(0, int(first) + int(second))
+        text2.set(int(first) + int(second))
     if action == 'subtraction':
-        e.insert(0, int(first) - int(second))
+        text2.set(int(first) - int(second))
     if action == 'multiplication':
-        e.insert(0, int(first) * int(second))
+        text2.set(int(first) * int(second))
     if action == 'division':
-        e.insert(0, int(first) / int(second))
+        text2.set(int(first) / int(second))
 
 
 def clear():
-    e.delete(0, 'end')
+    text2.set('')
 
 
 win = tk.Tk()
 win.title('Calculator')
 win.geometry('250x350')
 
-l2 = tk.Label(win, text='dtjyg', anchor='ne', bg='#e6f7ff', font=('Helvatical bold', 10))
-l2.grid(column=0, columnspan=4, row=0, sticky='NSEW')
+text1 = tk.StringVar()
+text1.set('')
+text2 = tk.StringVar()
 
-e = tk.Entry(win, text='', justify='right', bg='#e6f7ff', font=('Helvatical bold', 20))
-e.grid(column=0, columnspan=4, row=1, sticky='NSEW')
+l1 = tk.Label(win, textvariable=text1, anchor='ne', bg='#e6f7ff', font=('Helvatical bold', 10))
+l1.grid(column=0, columnspan=4, row=0, sticky='NSEW')
+
+l2 = tk.Label(win, textvariable=text2, anchor='se', bg='#e6f7ff', font=('Helvatical bold', 20))
+l2.grid(column=0, columnspan=4, row=1, sticky='NSEW')
+
+# 0-9 buttons
 
 b1 = tk.Button(win, text='1', bg='#b3e6ff', activeforeground='#cccccc',
                command=lambda: click(1))
@@ -104,6 +129,8 @@ b9.grid(column=2, row=5, sticky='NSEW')
 b0 = tk.Button(win, text='0', bg='#b3e6ff', activeforeground='#cccccc',
                command=lambda: click(0))
 b0.grid(column=0, columnspan=3, row=6, sticky='NSEW')
+
+# action buttons
 
 plus = tk.Button(win, text='+', bg='#66ccff', activeforeground='#cccccc', bd=4,
                  command=add)
