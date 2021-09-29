@@ -29,6 +29,7 @@ def add():
     global action
     action = 'addition'
     first = text2.get()
+    text1.set(str(first) + ' + ')
     text2.set('')
 
 
@@ -37,6 +38,7 @@ def sub():
     global action
     action = 'subtraction'
     first = text2.get()
+    text1.set(str(first) + ' - ')
     text2.set('')
 
 
@@ -45,6 +47,7 @@ def multiply():
     global action
     action = 'multiplication'
     first = text2.get()
+    text1.set(str(first) + ' × ')
     text2.set('')
 
 
@@ -53,12 +56,14 @@ def divide():
     global action
     action = 'division'
     first = text2.get()
+    text1.set(str(first) + ' ÷ ')
     text2.set('')
 
 
 def result():
     global second
     second = text2.get()
+    text1.set(text1.get() + str(second))
     text2.set('')
     if action == 'addition':
         text2.set(int(first) + int(second))
@@ -71,6 +76,7 @@ def result():
 
 
 def clear():
+    text1.set('')
     text2.set('')
 
 
@@ -85,7 +91,7 @@ text2 = tk.StringVar()
 l1 = tk.Label(win, textvariable=text1, anchor='ne', bg='#e6f7ff', font=('Helvatical bold', 10))
 l1.grid(column=0, columnspan=4, row=0, sticky='NSEW')
 
-l2 = tk.Label(win, textvariable=text2, anchor='se', bg='#e6f7ff', font=('Helvatical bold', 20))
+l2 = tk.Label(win, textvariable=text2, anchor='se', bg='#e6f7ff', font=('Helvatical bold', 30))
 l2.grid(column=0, columnspan=4, row=1, sticky='NSEW')
 
 # 0-9 buttons
