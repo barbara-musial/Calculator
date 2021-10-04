@@ -101,6 +101,8 @@ def result():
         last = text2.get()
         if last[-1] == '0':
             text2.set(int(float(last)))
+        else:
+            text2.set(round(float(last), 2))
     text3.set('  ')
 
 
